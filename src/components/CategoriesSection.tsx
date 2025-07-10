@@ -19,6 +19,7 @@ interface Product {
   baseColour?: string;
   articleType?: string;
   masterCategory: string;
+  link?: string;
 }
 
 interface CategoryData {
@@ -89,7 +90,7 @@ const CategoriesSection = () => {
     try {
       const { data, error } = await supabase
         .from('walamart_data')
-        .select('id, "productDisplayName", price, filename, "baseColour", "articleType", "masterCategory"');
+        .select('id, "productDisplayName", price, filename, "baseColour", "articleType", "masterCategory", link');
 
       if (error) {
         console.error('Error fetching data:', error);
@@ -200,14 +201,15 @@ const CategoriesSection = () => {
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {category.products.map((product) => (
-                      <ProductCard
-                        key={product.id}
-                        productDisplayName={product.productDisplayName}
-                        price={product.price}
-                        filename={product.filename}
-                        baseColour={product.baseColour}
-                        articleType={product.articleType}
-                      />
+                       <ProductCard
+                         key={product.id}
+                         productDisplayName={product.productDisplayName}
+                         price={product.price}
+                         filename={product.filename}
+                         baseColour={product.baseColour}
+                         articleType={product.articleType}
+                         link={product.link}
+                       />
                     ))}
                   </div>
                 </div>

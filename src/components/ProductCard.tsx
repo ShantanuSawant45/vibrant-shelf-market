@@ -6,6 +6,7 @@ interface ProductCardProps {
   filename: string;
   baseColour?: string;
   articleType?: string;
+  link?: string;
 }
 
 const ProductCard = ({ 
@@ -13,10 +14,11 @@ const ProductCard = ({
   price, 
   filename, 
   baseColour, 
-  articleType 
+  articleType,
+  link 
 }: ProductCardProps) => {
-  // Construct image URL (assuming filename corresponds to product image)
-  const imageUrl = `https://images.unsplash.com/photo-${filename}?w=300&h=300&fit=crop&crop=center`;
+  // Use the actual link from database or fallback to constructed URL
+  const imageUrl = link || `https://images.unsplash.com/photo-${filename}?w=300&h=300&fit=crop&crop=center`;
   
   return (
     <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 bg-gradient-card border-muted/30">
