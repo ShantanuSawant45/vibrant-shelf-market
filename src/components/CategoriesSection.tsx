@@ -113,7 +113,7 @@ const CategoriesSection = () => {
         return {
           ...category,
           itemCount: `${products.length} items`,
-          products: products.slice(0, 8) // Limit to 8 products per category for display
+          products: products.slice(0, 70) // Limit to 70 products per category for display
         };
       }).filter(category => category.products.length > 0); // Only show categories with products
 
