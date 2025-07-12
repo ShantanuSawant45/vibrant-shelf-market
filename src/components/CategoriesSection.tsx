@@ -200,9 +200,10 @@ const CategoriesSection = () => {
                     {category.title} ({category.itemCount})
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {category.products.map((product) => (
+                  {category.products.map((product) => (
                        <ProductCard
                          key={product.id}
+                         id={product.id}
                          productDisplayName={product.productDisplayName}
                          price={product.price}
                          filename={product.filename}

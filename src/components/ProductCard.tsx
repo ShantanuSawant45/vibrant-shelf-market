@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
+  id: string;
   productDisplayName: string;
   price: string;
   filename: string;
@@ -10,6 +12,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ 
+  id,
   productDisplayName, 
   price, 
   filename, 
@@ -17,11 +20,20 @@ const ProductCard = ({
   articleType,
   link 
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+  
   // Use the actual link from database or fallback to constructed URL
   const imageUrl = link || `https://images.unsplash.com/photo-${filename}?w=300&h=300&fit=crop&crop=center`;
   
+  const handleClick = () => {
+    navigate(`/product/${id}`);
+  };
+  
   return (
-    <Card className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 bg-gradient-card border-muted/30">
+    <Card 
+      className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 bg-gradient-card border-muted/30"
+      onClick={handleClick}
+    >
       <div className="relative">
         <div className="overflow-hidden h-48">
           <img

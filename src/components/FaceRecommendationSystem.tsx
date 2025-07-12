@@ -326,6 +326,7 @@ const FaceRecommendationSystem = () => {
                 {recommendations.map((product) => (
                   <ProductCard
                     key={product.id}
+                    id={product.id}
                     productDisplayName={product.productDisplayName}
                     price={product.price}
                     filename={product.filename}
